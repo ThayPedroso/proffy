@@ -3,55 +3,34 @@ import React from 'react'
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg'
 
 import './styles.css'
-import api from '../../services/api'
 
-export interface Teacher {
-    id: number
-    avatar: string
-    bio: string
-    cost: number
-    name: string
-    subject: string
-    whatsapp: string
-}
-
-interface TeacherItemProps {
-    teacher: Teacher
-}
-
-const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
-    function createNewConnection() {
-        api.post('connections', {
-            user_id: teacher.id,
-        })
-    }
-
+function TeacherItem() {
     return (
         <article className="teacher-item">
             <header>
-                <img src={teacher.avatar} alt={teacher.name}/>
+                <img src="https://avatars3.githubusercontent.com/u/44008476?s=460&u=7dbb833a401c575edc98f696cb5823d3b5e78e72&v=4" alt="Thayla"/>
                 <div>
-                    <strong>{teacher.name}</strong>
-                    <span>{teacher.subject}</span>
+                    <strong>Thayla Pedroso</strong>
+                    <span>Indústria 4.0</span>
                 </div>
             </header>
 
-            <p>{teacher.bio}</p>
+            <p>
+                Entusiasta das melhores tecnologias de desenvolvimento de automação de software.
+                <br/><br/>
+                Apaixonada por desenvolver soluções criativas e inteligentes reunindo TI e TA.
+            </p>
 
             <footer>
                 <p>
                     Preço/hora 
-                    <strong>R$ {teacher.cost}</strong>
+                    <strong>R$ 200,00</strong>
                 </p>
 
-                <a
-                    target="_blank" 
-                    onClick={createNewConnection} 
-                    href={`https://wa.me/${teacher.whatsapp}`}
-                >
+                <button type="button">
                     <img src={whatsappIcon} alt="Whatsapp"/>
                     Entrar em contato
-                </a>
+                </button>
             </footer>
         </article>
     )
